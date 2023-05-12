@@ -163,7 +163,7 @@ function EmployeeList() {
 
   return (
     <>
-      <div className="mb-5 flex justify-center">
+      <div className="mb-10 flex justify-center">
         <form onSubmit={(e) => createEmployee(e)}>
           <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
