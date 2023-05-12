@@ -101,4 +101,39 @@ const getInitialData = () => [
   },
 ];
 
-export { getInitialData };
+const getAddressEmployee = () => [
+  {
+    id: 1,
+    id_user: 1,
+    street: '123 Main St',
+    city: 'New York',
+    province: 'New York',
+    zipCode: '10001',
+  },
+  {
+    id: 2,
+    id_user: 2,
+    street: '456 Elm St',
+    city: 'Los Angeles',
+    province: 'California',
+    zipCode: '90001',
+  },
+  {
+    id: 1,
+    id_user: 3,
+    street: '789 Oak St',
+    city: 'Chicago',
+    province: 'Illinois',
+    zipCode: '60601',
+  },
+  {
+    id: 2,
+    id_user: 4,
+    street: '987 Pine St',
+    city: 'San Francisco',
+    province: 'California',
+    zipCode: '94101',
+  },
+];
+
+export { getInitialData, getAddressEmployee };

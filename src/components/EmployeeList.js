@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getInitialData } from '../utils';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
@@ -142,7 +143,9 @@ function EmployeeList() {
                   <td>{employee.email}</td>
                   <td>{employee.position}</td>
                   <td>
-                    <button className="btn btn-info btn-md mr-3">View</button>
+                    <Link to={`/details/${employee.id}`} role="button" className="btn btn-info btn-md mr-3">
+                      View
+                    </Link>
                     <button className="btn btn-warning btn-md mr-3" onClick={() => handleUpdate(employee.id)}>
                       Update
                     </button>
