@@ -7,6 +7,12 @@ import 'sweetalert2/dist/sweetalert2.css';
 function EmployeeList() {
   const [employees, setEmployees] = useState(getInitialData());
   let [number] = useState(1);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [position, setPosition] = useState('');
+  const [joinDate, setJoinDate] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleUpdate = (id) => {
     const employeeToUpdate = employees.find((employee) => employee.id === id);
@@ -113,8 +119,75 @@ function EmployeeList() {
     });
   };
 
+  const onChangeFirstNameHandler = (e) => {
+    const value = e.target.value;
+    setFirstName(value);
+  };
+
+  const onChangeLastNameHandler = (e) => {
+    const value = e.target.value;
+    setLastName(value);
+  };
+
+  const onChangeEmailHandler = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+  };
+
+  const onChangePositionHandler = (e) => {
+    const value = e.target.value;
+    setPosition(value);
+  };
+
+  const onChangeJoinDateHandler = (e) => {
+    const value = e.target.value;
+    setJoinDate(value);
+  };
+
+  const onChangePhoneHandler = (e) => {
+    const value = e.target.value;
+    setPhone(value);
+  };
+
+  const createEmployee = (e) => {
+    e.preventDefault();
+    const idGenerate = new Date().toISOString();
+
+    setEmployees((employee) => [...employee, { id: idGenerate, firstName: firstName, lastName: lastName, email: email, position: position, joinDate: joinDate, phone: phone }]);
+    Swal.fire({
+      icon: 'success',
+      title: 'Berhasil',
+      text: 'Berhasil menambahkan data',
+    });
+  };
+
   return (
     <>
+      <div className="mb-5 flex justify-center">
+        <form onSubmit={(e) => createEmployee(e)}>
+          <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card-body">
+              <h1 className="text-center mb-6 font-bold text-base uppercase">Create Employees</h1>
+              <label>First Name</label>
+              <input type="text" placeholder="First Name" className="input input-bordered w-full max-w-xs" onChange={(e) => onChangeFirstNameHandler(e)} />
+              <label>Last Name</label>
+              <input type="text" placeholder="Last Name" className="input input-bordered w-full max-w-xs" onChange={(e) => onChangeLastNameHandler(e)} />
+              <label>Email</label>
+              <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs" onChange={(e) => onChangeEmailHandler(e)} />
+              <label>Position</label>
+              <input type="text" placeholder="Position" className="input input-bordered w-full max-w-xs" onChange={(e) => onChangePositionHandler(e)} />
+              <label>Join Date</label>
+              <input type="date" placeholder="Join Date" className="input input-bordered w-full max-w-xs" onChange={(e) => onChangeJoinDateHandler(e)} />
+              <label>Phone</label>
+              <input type="text" placeholder="Phone" className="input input-bordered w-full max-w-xs" onChange={(e) => onChangePhoneHandler(e)} />
+              <button type="submit" className="btn btn-success btn-md mr-3">
+                Create
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <h1 className="text-center mb-6 font-bold md:text-3xl text-2xl uppercase">Employee list page</h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
